@@ -98,3 +98,21 @@ int pop_top(stack_t **top, unsigned int ln, char **inst)
 	free(placeholder);
 	return (1);
 }
+/**
+ * print_int - prints the value of the top element in the stack
+ * @top: the address of the pointer to the top of the stack
+ * @ln: line number
+ * @inst: instruction array
+ * Return: (1) on success, (-1) otherwise
+ */
+int print_int(stack_t **top, unsigned int ln, char **inst)
+{
+	if (*top == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", ln);
+		free_mem(inst);
+		return (-1);
+	}
+	printf("%d\n", (*top)->n);
+	return (1);
+}

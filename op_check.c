@@ -10,8 +10,8 @@ int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst)
 		{"push", push_onto_stack},
 		{"pall", print_all},
 		{"pop", pop_top},
-		/*
-		*{"pint", pint},
+		{"pint", print_int},
+		/**
 		*{"swap", swap},
 		*{"add", add},
 		*{"nop", nop},
@@ -20,7 +20,7 @@ int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst)
 	};
 	unsigned int i = 0;
 
-	while (i < 3)
+	while (i < 4)
 	{
 		if (strcmp(opcode, op_list[i].opcode) == 0)
 			return (op_list[i].f);
