@@ -13,7 +13,7 @@ int push_onto_stack(stack_t **top, unsigned int ln, char **inst)
 
 	if (_isdigit(inst[1]) != 1)
 	{
-		fprintf(stderr, "L%d: Usage: push integer\n", ln);
+		fprintf(stderr, "L%d: usage: push integer\n", ln);
 		free_mem(inst);
 		return (-1);
 	}

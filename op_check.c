@@ -40,7 +40,7 @@ int isemptyline(char *str)
 		return (1);
 	while (str[i] != 0)
 	{
-		if (str[i] != 32 && str[i] != 10 && str[i] != '\t')
+		if (str[i] != 32 && str[i] != 10)
 			return (-1);
 		i++;
 	}
