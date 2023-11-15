@@ -10,7 +10,7 @@
  */
 int parse_and_execute(FILE *file, stack_t **top)
 {
-	char **preins = NULL, line[4096], *pointer;
+	char **preins = NULL, line[6252], *pointer;
 	int (*f)(stack_t **top, unsigned int line_number, char **instr);
 	unsigned int line_count = 0;
 
