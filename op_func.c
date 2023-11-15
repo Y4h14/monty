@@ -85,7 +85,7 @@ int pop_top(stack_t **top, unsigned int ln, char **inst)
 {
 	stack_t *placeholder = NULL;
 
-	if (*top == NULL || top == NULL)
+	if (top == NULL || *top == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", ln);
 		free_mem(inst);
