@@ -1,0 +1,72 @@
+#include "monty.h"
+/**
+ * push_onto_stack - pushes an element on top of the stack
+ * @top: the address of the pointer to the top of the stack
+ * @line_number: line number
+ * Return: (void)
+ */
+int push_onto_stack(stack_t **top, unsigned int ln, char **inst)
+{
+	stack_t *newelement = NULL;
+	int data = 0;
+
+	if (_isdigit(inst[1]) != 1)
+	{
+		fprintf(stderr, "Usage: push integer\n");
+		free_mem(inst);
+		return (-1);
+	}
+	data = atoi(inst[1]);
+	newelement = malloc(sizeof(stack_t));
+	if (newelement == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_mem(inst);
+		return (-1);
+	}
+	newelement->n = data;
+	if (*top != NULL)
+		(*top)->prev = newelement;
+	newelement->prev = NULL;
+	newelement->next = *top;
+	*top = newelement;
+	return (1);
+}
+/**
+ * print_all - prints all the elements in the stack
+ * @top: the address of the pointer to the top of the stack
+ * @line_number: line number
+ * Return: (void)
+ */
+int print_all(stack_t **top, unsigned int ln, char **inst)
+{
+	stack_t *iter = *top;
+
+	if (iter == NULL)
+		return (1);
+	while (iter != NULL)
+	{
+		printf("%d\n", iter->n);
+		iter = iter->next;
+	}
+	return (1);
+}
+/**
+ * is_digit - checks if the given string has only digits
+ * @str: the given string
+ * Return: (1) if it is only digits, (-1) otherwise
+ */
+int _isdigit(char *str)
+{
+	int i = 0;
+
+	if (str == NULL || *str == 0)
+		return (-1);
+	while (str[i] != 0)
+	{
+		if (str[i] < 48 || str[i] > 57)
+			return (-1);
+		i++;
+	}
+	return (1);
+}

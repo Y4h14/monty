@@ -29,7 +29,7 @@ char **tokenizer(char *ch)
 	while (i < wordc)
 	{
 		word = strtok(NULL, del);
-		char_count = strlen(word);
+		char_count = _strlen(word);
 		*(wordlist + i) = malloc(sizeof(char) * char_count + 1);
 		if (*(wordlist + i) == NULL)
 		{
@@ -43,7 +43,7 @@ char **tokenizer(char *ch)
 	return (wordlist);
 }
 /**
-  * fill_row - fill worldlist pointer
+  * fill_row - fill worldlist pointer32
   * put words in each rows
   * @wordlist: pointer
   * @row: wordlist pointer row
@@ -55,7 +55,7 @@ void fill_row(char **wordlist, int row, char *word)
 
 	while (word[i] != 0)
 	{
-		if (word[i] != 10 && word[i] != 32)
+		if (word[i] != 10 && word[i] != 32 && word[i] != '\t')
 		{
 			wordlist[row][j] = word[i];
 			j++;

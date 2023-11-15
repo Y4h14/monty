@@ -21,7 +21,11 @@ int main(int argc, char **argv)
 		write(2, "Error: Can't open file\n", 24);
 		exit(EXIT_FAILURE);
 	}
-	parse_and_execute(input, &top);
+	if (parse_and_execute(input, &top) == -1)
+	{
+		fclose(input);
+		exit(EXIT_FAILURE);
+	}
 	fclose(input);
 	return (0);
 }

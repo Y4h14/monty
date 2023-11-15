@@ -11,7 +11,7 @@ int _strlen(char *buffer)
 
 	while (buffer[i] != 0)
 	{
-		if (buffer[i] == 10 || buffer[i] == 32)
+		if (buffer[i] == 10 || buffer[i] == 32 || buffer[i] == '\t')
 			del++;
 		i++;
 	}

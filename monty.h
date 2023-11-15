@@ -18,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -33,17 +33,22 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	int (*f)(stack_t **stack, unsigned int ln, char **inst);
 } instruction_t;
 
 /*Functions*/
-
 int parse_and_execute(FILE *file, stack_t **top);
 char **tokenizer(char *ch);
 void fill_row(char **wordlist, int row, char *word);
 int word_count(char *str);
 int _strlen(char *buffer);
 void free_memory(char **pointer, int n);
+int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+int push_onto_stack(stack_t **top, unsigned int ln, char **inst);
+int print_all(stack_t **top, unsigned int ln, char **inst);
+int _isdigit(char *str);
+void free_mem(char **pointer);
 
 #endif
