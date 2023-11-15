@@ -44,16 +44,15 @@ int print_all(stack_t **top, unsigned int ln, char **inst)
 {
 	stack_t *iter = *top;
 
-	ln = 0;
-	if (iter == NULL)
+	if (*top == NULL || top == NULL)
 		return (1);
 	while (iter != NULL)
 	{
 		printf("%d\n", iter->n);
 		iter = iter->next;
 	}
-	if (*inst == NULL)
-		ln++;
+	inst = (char **) inst;
+	ln = (unsigned int) ln;
 	return (1);
 }
 /**
