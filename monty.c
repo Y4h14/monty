@@ -13,19 +13,19 @@ int main(int argc, char **argv)
 	if (argc != 2)
 	{
 		write(2, "USAGE: monty file\n", 19);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	input = fopen(argv[1], "r+");
 	if (input == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	if (parse_and_execute(input, &top) == -1)
 	{
 		fclose(input);
 		free_stack(top);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	free_stack(top);
 	fclose(input);
