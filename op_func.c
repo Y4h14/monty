@@ -93,7 +93,8 @@ int pop_top(stack_t **top, unsigned int ln, char **inst)
 	}
 	placeholder = *top;
 	*top = (*top)->next;
-	(*top)->prev = NULL;
+	if (*top != NULL)
+		(*top)->prev = NULL;
 	free(placeholder);
 	return (1);
 }
