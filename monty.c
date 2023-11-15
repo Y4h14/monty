@@ -24,8 +24,10 @@ int main(int argc, char **argv)
 	if (parse_and_execute(input, &top) == -1)
 	{
 		fclose(input);
+		free_stack(top);
 		exit(EXIT_FAILURE);
 	}
+	free_stack(top);
 	fclose(input);
 	return (0);
 }

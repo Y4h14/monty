@@ -2,7 +2,8 @@
 /**
  * push_onto_stack - pushes an element on top of the stack
  * @top: the address of the pointer to the top of the stack
- * @line_number: line number
+ * @ln: line number
+ * @inst: instruction
  * Return: (void)
  */
 int push_onto_stack(stack_t **top, unsigned int ln, char **inst)
@@ -10,6 +11,7 @@ int push_onto_stack(stack_t **top, unsigned int ln, char **inst)
 	stack_t *newelement = NULL;
 	int data = 0;
 
+	ln = 0;
 	if (_isdigit(inst[1]) != 1)
 	{
 		fprintf(stderr, "Usage: push integer\n");
@@ -30,18 +32,21 @@ int push_onto_stack(stack_t **top, unsigned int ln, char **inst)
 	newelement->prev = NULL;
 	newelement->next = *top;
 	*top = newelement;
+	ln++;
 	return (1);
 }
 /**
  * print_all - prints all the elements in the stack
  * @top: the address of the pointer to the top of the stack
- * @line_number: line number
+ * @ln: line number
+ * @inst: instruction
  * Return: (void)
  */
 int print_all(stack_t **top, unsigned int ln, char **inst)
 {
 	stack_t *iter = *top;
 
+	ln = 0;
 	if (iter == NULL)
 		return (1);
 	while (iter != NULL)
@@ -49,10 +54,12 @@ int print_all(stack_t **top, unsigned int ln, char **inst)
 		printf("%d\n", iter->n);
 		iter = iter->next;
 	}
+	if (*inst == NULL)
+		ln++;
 	return (1);
 }
 /**
- * is_digit - checks if the given string has only digits
+ * _isdigit - checks if the given string has only digits
  * @str: the given string
  * Return: (1) if it is only digits, (-1) otherwise
  */

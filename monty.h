@@ -50,5 +50,6 @@ int push_onto_stack(stack_t **top, unsigned int ln, char **inst);
 int print_all(stack_t **top, unsigned int ln, char **inst);
 int _isdigit(char *str);
 void free_mem(char **pointer);
+void free_stack(stack_t *head);
 
 #endif
