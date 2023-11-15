@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	input = fopen(argv[1], "r+");
 	if (input == NULL)
 	{
-		write(2, "Error: Can't open file\n", 24);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	if (parse_and_execute(input, &top) == -1)

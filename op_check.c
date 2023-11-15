@@ -27,3 +27,22 @@ int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst)
 	}
 	return (NULL);
 }
+/**
+ * isemptyline - checks if a given line is pratically empty
+ * @str: the string to be checked
+ * Return: (1) if it's empty, (-1) otherwise
+ */
+int isemptyline(char *str)
+{
+	int i = 0;
+
+	if (str == NULL || *str == 0)
+		return (1);
+	while (str[i] != 0)
+	{
+		if (str[i] != 32 && str[i] != 10 && str[i] != '\t')
+			return (-1);
+		i++;
+	}
+	return (1);
+}

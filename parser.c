@@ -10,36 +10,37 @@
  */
 int parse_and_execute(FILE *file, stack_t **top)
 {
-	char **preinstruct = NULL, line[4096], *pointer;
-	int (*f)(stack_t **top, unsigned int line_number, char **instruction);
+	char **preins = NULL, line[4096], *pointer;
+	int (*f)(stack_t **top, unsigned int line_number, char **instr);
+	unsigned int line_count = 0;
 
 	while (1)
 	{
 		pointer = fgets(line, sizeof(line), file);
 		if (pointer == NULL)
-		{
-			printf("End of file");
 			break;
-		}
-		preinstruct = tokenizer(line);
-		if (preinstruct == NULL)
+		line_count++;
+		if (isemptyline(line) == 1)
+			continue;
+		preins = tokenizer(line);
+		if (preins == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
 			return (-1);
 		}
-		f = op_check(preinstruct[0]);
+		f = op_check(preins[0]);
 		if (f != NULL)
 		{
-			if (f(top, 0, preinstruct) == -1)
+			if (f(top, line_count, preins) == -1)
 				return (-1);
 		}
 		else
 		{
-			fprintf(stderr, "Error: opcode not supported\n");
-			free_memory(preinstruct, word_count(line));
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_count, preins[0]);
+			free_memory(preins, word_count(line));
 			return (-1);
 		}
-		free_memory(preinstruct, word_count(line));
+		free_memory(preins, word_count(line));
 	}
 	return (1);
 }

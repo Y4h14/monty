@@ -11,10 +11,9 @@ int push_onto_stack(stack_t **top, unsigned int ln, char **inst)
 	stack_t *newelement = NULL;
 	int data = 0;
 
-	ln = 0;
 	if (_isdigit(inst[1]) != 1)
 	{
-		fprintf(stderr, "Usage: push integer\n");
+		fprintf(stderr, "L%d: Usage: push integer\n", ln);
 		free_mem(inst);
 		return (-1);
 	}
@@ -32,7 +31,6 @@ int push_onto_stack(stack_t **top, unsigned int ln, char **inst)
 	newelement->prev = NULL;
 	newelement->next = *top;
 	*top = newelement;
-	ln++;
 	return (1);
 }
 /**
