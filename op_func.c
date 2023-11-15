@@ -74,3 +74,26 @@ int _isdigit(char *str)
 	}
 	return (1);
 }
+/**
+ * pop_top - pops the top of the stack
+ * @top: the address of the pointer to the top of the stack
+ * @ln: line number
+ * @inst: user instruction
+ * Return: (1) if successful, (-1) otherwise
+ */
+int pop_top(stack_t **top, unsigned int ln, char **inst)
+{
+	stack_t *placeholder = NULL;
+
+	if (*top == NULL || top == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", ln);
+		return (-1);
+	}
+	placeholder = *top;
+	*top = (*top)->next;
+	(*top)->prev = NULL;
+	free(placeholder);
+	inst = (char **) inst;
+	return (1);
+}

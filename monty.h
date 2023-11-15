@@ -48,6 +48,7 @@ int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int push_onto_stack(stack_t **top, unsigned int ln, char **inst);
 int print_all(stack_t **top, unsigned int ln, char **inst);
+int pop_top(stack_t **top, unsigned int ln, char **inst);
 int _isdigit(char *str);
 void free_mem(char **pointer);
 void free_stack(stack_t *head);
