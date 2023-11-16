@@ -42,8 +42,14 @@ int isemptyline(char *str)
 	while (str[i] != 0)
 	{
 		if (str[i] != 32 && str[i] != 10 && str[i] != '\t')
-			return (-1);
+		{
+			if (str[i] == '#')
+				return (1);
+			else
+				return (-1);
+		}
 		i++;
 	}
+
 	return (1);
 }
