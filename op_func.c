@@ -26,10 +26,10 @@ int push_onto_stack(stack_t **top, unsigned int ln, char **inst)
 		return (-1);
 	}
 	newelement->n = data;
-	if (*top != NULL)
-		(*top)->prev = newelement;
 	newelement->prev = NULL;
 	newelement->next = *top;
+	if (*top != NULL)
+		(*top)->prev = newelement;
 	*top = newelement;
 	return (1);
 }
