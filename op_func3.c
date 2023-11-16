@@ -9,7 +9,7 @@
  */
 int div_top(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *temp;
+	stack_t *temp = NULL;
 
 	inst = (char **) inst;
 	if (stack_hight(*top) < 2)
@@ -42,7 +42,7 @@ int div_top(stack_t **top, unsigned int ln, char **inst)
  */
 int mod_top(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *temp;
+	stack_t *temp = NULL;
 
 	inst = (char **) inst;
 	if (stack_hight(*top) < 2)
@@ -75,9 +75,8 @@ int mod_top(stack_t **top, unsigned int ln, char **inst)
  */
 int pchar_top(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *temp;
+	stack_t *temp = *top;
 
-	temp = *top;
 	if (temp == NULL || top == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", ln);
@@ -105,11 +104,10 @@ int pchar_top(stack_t **top, unsigned int ln, char **inst)
  */
 int pstr_top(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *temp;
+	stack_t *temp = *top;
 	(void)ln;
 	(void)inst;
 
-	temp = *top;
 	while (temp != NULL)
 	{
 		if (temp->n > 127 || temp->n <= 0)
@@ -132,7 +130,7 @@ int pstr_top(stack_t **top, unsigned int ln, char **inst)
  */
 int rotl(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *ptr1, *ptr2;
+	stack_t *ptr1 = NULL, *ptr2 = NULL;
 	(void)ln;
 	(void)inst;
 

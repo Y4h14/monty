@@ -8,11 +8,10 @@
  */
 int rotr(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *temp;
+	stack_t *temp = *top;
 	(void)ln;
 	(void)inst;
 
-	temp = *top;
 	if (*top == NULL || (*top)->next == NULL)
 	{
 		return (1);
