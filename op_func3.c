@@ -9,28 +9,24 @@
  */
 int div_top(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *temp = NULL;
+	int x, y;
 
-
-	if (*top == NULL || stack_hight(*top) < 2)
+	if (*top == NULL || (*top)->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't div stack too short\n", ln);
+		fprintf(stderr, "L%d: can't div, stack too short\n", ln);
 		free_mem(inst);
 		return (-1);
 	}
-
-	temp = *top;
-	if (temp->n == 0)
+	if ((*top)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", ln);
 		free_mem(inst);
 		return (-1);
 	}
-
-	(temp->next)->n = (temp->next)->n / temp->n;
-	*top = temp->next;
-	free(temp);
-	/*pop_top(top, ln, inst);*/
+	x = (*top)->n;
+	y = (*top)->next->n;
+	(*top)->next->n = y / x;
+	pop_top(top, ln, inst);
 	return (1);
 }
 /**
