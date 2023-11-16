@@ -122,3 +122,35 @@ int pstr_top(stack_t **top, unsigned int ln, char **inst)
 	printf("\n");
 	return (1);
 }
+
+/**
+ * rtol - rotates the stack to the top
+ * @top: the top element of the stack
+ * @ln: line number
+ * @inst: the line instructions array
+ * Return: (1) on success and (-1) otherwise
+ */
+int rotl(stack_t **top, unsigned int ln, char **inst)
+{
+	stack_t *ptr1, *ptr2;
+	(void)ln;
+
+	if (*top == NULL || (*top)->next == NULL)
+	{
+		free_mem(inst);
+		return (1);
+	}
+	ptr1 = *top;
+	ptr2 = (*top)->next;
+	ptr2->prev = NULL;
+
+	while (ptr1->next != NULL)
+	{
+		ptr1 = ptr1->next;
+	}
+	ptr1->next = *top;
+	(*top)->next = NULL;
+	(*top)->prev = ptr1;
+	*top = ptr2;
+	return (1);
+}
