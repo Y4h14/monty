@@ -75,8 +75,9 @@ int mod_top(stack_t **top, unsigned int ln, char **inst)
  */
 int pchar_top(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *temp = *top;
+	stack_t *temp = NULL;
 
+	temp = *top;
 	if (temp == NULL || top == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", ln);
