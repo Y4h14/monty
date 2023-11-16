@@ -134,10 +134,10 @@ int rotl(stack_t **top, unsigned int ln, char **inst)
 {
 	stack_t *ptr1, *ptr2;
 	(void)ln;
+	(void)inst;
 
 	if (*top == NULL || (*top)->next == NULL)
 	{
-		free_mem(inst);
 		return (1);
 	}
 	ptr1 = *top;
