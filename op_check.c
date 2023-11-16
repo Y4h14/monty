@@ -14,11 +14,13 @@ int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst)
 		{"swap", swap_top},
 		{"add", add_top},
 		{"nop", nop},
+		{"sub", sub_top},
+		{"mul", mul_top},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
 
-	while (i < 7)
+	while (i < 9)
 	{
 		if (strcmp(opcode, op_list[i].opcode) == 0)
 			return (op_list[i].f);
