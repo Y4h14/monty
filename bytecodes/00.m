@@ -1,6 +1,6 @@
 push 5
 push 50
 push 50
-push 33
-mod
+push 705
+pchar
 pall

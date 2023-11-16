@@ -18,11 +18,12 @@ int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst)
 		{"mul", mul_top},
 		{"div", div_top},
 		{"mod", mod_top},
+		{"pchar", pchar_top},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
 
-	while (i < 11)
+	while (i < 12)
 	{
 		if (strcmp(opcode, op_list[i].opcode) == 0)
 			return (op_list[i].f);

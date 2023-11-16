@@ -65,3 +65,33 @@ int mod_top(stack_t **top, unsigned int ln, char **inst)
 	pop_top(top, ln, inst);
 	return (1);
 }
+
+/**
+ * pchar_top - prints a char equivilent to an int
+ * @top: the top element of the stack
+ * @ln: line number
+ * @inst: the line instructions array
+ * Return: (1) on success and (-1) otherwise
+ */
+int pchar_top(stack_t **top, unsigned int ln, char **inst)
+{
+	stack_t *temp;
+
+	temp = *top;
+	if (temp == NULL || top == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", ln);
+		free_mem(inst);
+		return (-1);
+	}
+
+	if (temp->n > 127 || temp->n < 0)
+	{
+		fprintf(stderr, "L%d, can't pchar, value out of range\n", ln);
+		free_mem(inst);
+		return (-1);
+	}
+
+	printf("%c\n", temp->n);
+	return (1);
+}
