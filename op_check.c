@@ -7,7 +7,9 @@
 int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst)
 {
 	instruction_t op_list[] = {
-		{"push", push_onto_stack},
+		{"stack", stack_switch},
+		{"queue", queue_switch},
+		{"push", push},
 		{"pall", print_all},
 		{"pop", pop_top},
 		{"pint", print_int},
@@ -26,7 +28,7 @@ int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst)
 	};
 	unsigned int i = 0;
 
-	while (i < 15)
+	while (i < 17)
 	{
 		if (strcmp(opcode, op_list[i].opcode) == 0)
 			return (op_list[i].f);

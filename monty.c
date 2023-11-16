@@ -1,3 +1,4 @@
+#define DEFINE_GLOBAL_VARIABLE
 #include "monty.h"
 /**
  * main - Monty main funnction

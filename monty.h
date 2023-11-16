@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
+#include <stdbool.h>
 #include <unistd.h>
 /*Data structures*/
 
@@ -36,7 +37,13 @@ typedef struct instruction_s
 	char *opcode;
 	int (*f)(stack_t **stack, unsigned int ln, char **inst);
 } instruction_t;
-
+/*Global variables*/
+#ifdef DEFINE_GLOBAL_VARIABLE
+#define GLOBAL_VARIABLE_VALUE true
+bool is_stack = GLOBAL_VARIABLE_VALUE;
+#else
+extern bool is_stack;
+#endif
 /*Functions*/
 int parse_and_execute(FILE *file, stack_t **top);
 char **tokenizer(char *ch);
@@ -47,6 +54,8 @@ void free_memory(char **pointer, int n);
 int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int push_onto_stack(stack_t **top, unsigned int ln, char **inst);
+int enqueue(stack_t **top, unsigned int ln, char **inst);
+int push(stack_t **top, unsigned int ln, char **inst);
 int print_all(stack_t **top, unsigned int ln, char **inst);
 int print_int(stack_t **top, unsigned int ln, char **inst);
 int swap_top(stack_t **top, unsigned int ln, char **inst);
@@ -55,6 +64,8 @@ int add_top(stack_t **top, unsigned int ln, char **inst);
 int sub_top(stack_t **top, unsigned int ln, char **inst);
 int mul_top(stack_t **top, unsigned int ln, char **inst);
 int nop(stack_t **top, unsigned int ln, char **inst);
+int stack_switch(stack_t **top, unsigned int ln, char **inst);
+int queue_switch(stack_t **top, unsigned int ln, char **inst);
 int _isdigit(char *str);
 void free_mem(char **pointer);
 void free_stack(stack_t *head);
