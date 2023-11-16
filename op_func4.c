@@ -8,7 +8,7 @@
  */
 int rotr(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *temp = *top;
+	stack_t *temp = NULL;
 	(void)ln;
 	(void)inst;
 
@@ -16,7 +16,7 @@ int rotr(stack_t **top, unsigned int ln, char **inst)
 	{
 		return (1);
 	}
-
+	temp = *top;
 	while (temp->next != NULL)
 	{
 		temp = temp->next;
