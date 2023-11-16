@@ -26,7 +26,7 @@ int div_top(stack_t **top, unsigned int ln, char **inst)
 		free_mem(inst);
 		return (-1);
 	}
-	
+
 	(temp->next)->n = (temp->next)->n / temp->n;
 	/**top = temp->next;*/
 	pop_top(top, ln, inst);
