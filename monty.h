@@ -51,6 +51,8 @@ int print_all(stack_t **top, unsigned int ln, char **inst);
 int print_int(stack_t **top, unsigned int ln, char **inst);
 int swap_top(stack_t **top, unsigned int ln, char **inst);
 int pop_top(stack_t **top, unsigned int ln, char **inst);
+int add_top(stack_t **top, unsigned int ln, char **inst);
+int nop(stack_t **top, unsigned int ln, char **inst);
 int _isdigit(char *str);
 void free_mem(char **pointer);
 void free_stack(stack_t *head);

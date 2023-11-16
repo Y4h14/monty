@@ -12,15 +12,13 @@ int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst)
 		{"pop", pop_top},
 		{"pint", print_int},
 		{"swap", swap_top},
-		/**
-		*{"add", add},
-		*{"nop", nop},
-		*/
+		{"add", add_top},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
 
-	while (i < 5)
+	while (i < 7)
 	{
 		if (strcmp(opcode, op_list[i].opcode) == 0)
 			return (op_list[i].f);
