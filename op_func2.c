@@ -101,7 +101,7 @@ int mul_top(stack_t **top, unsigned int ln, char **inst)
 		free_mem(inst);
 		return (-1);
 	}
-	(*top)->next->n *= (*top)->n;
+	(*top)->next->n = (*top)->next->n * (*top)->n;
 	pop_top(top, ln, inst);
 	return (1);
 }
