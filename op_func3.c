@@ -85,7 +85,7 @@ int pchar_top(stack_t **top, unsigned int ln, char **inst)
 		return (-1);
 	}
 
-	if (temp->n > 127 || temp->n < 0)
+	if (temp->n > 127 || temp->n < 32)
 	{
 		fprintf(stderr, "L%d, can't pchar, value out of range\n", ln);
 		free_mem(inst);
@@ -93,5 +93,32 @@ int pchar_top(stack_t **top, unsigned int ln, char **inst)
 	}
 
 	printf("%c\n", temp->n);
+	return (1);
+}
+
+/**
+ * pstr_top - prints the stack as a string
+ * @top: the top element of the stack
+ * @ln: line number
+ * @inst: the line instructions array
+ * Return: (1) on success and (-1) otherwise
+ */
+int pstr_top(stack_t **top, unsigned int ln, char **inst)
+{
+	stack_t *temp;
+	(void)ln;
+	(void)inst;
+
+	temp = *top;
+	while (temp != NULL)
+	{
+		if (temp->n > 127 || temp->n <= 0)
+		{
+			break;
+		}
+		printf("%c", temp->n);
+		temp = temp->next;
+	}
+	printf("\n");
 	return (1);
 }
