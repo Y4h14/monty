@@ -28,8 +28,9 @@ int div_top(stack_t **top, unsigned int ln, char **inst)
 	}
 
 	(temp->next)->n = (temp->next)->n / temp->n;
-	/**top = temp->next;*/
-	pop_top(top, ln, inst);
+	*top = temp->next;
+	free(temp);
+	/*pop_top(top, ln, inst);*/
 	return (1);
 }
 /**
