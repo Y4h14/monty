@@ -95,13 +95,17 @@ int sub_top(stack_t **top, unsigned int ln, char **inst)
  */
 int mul_top(stack_t **top, unsigned int ln, char **inst)
 {
-	if (*top == NULL || (*top)->next == NULL)
+	int num1, num2;
+
+	if (top == NULL || *top == NULL || (*top)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", ln);
 		free_mem(inst);
 		return (-1);
 	}
-	(*top)->next->n = (*top)->next->n * (*top)->n;
+	num1 = (*top)->n;
+	num2 = (*top)->next->n;
+	(*top)->next->n = num1 * num2;
 	pop_top(top, ln, inst);
 	return (1);
 }
