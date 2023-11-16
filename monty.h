@@ -59,6 +59,8 @@ int _isdigit(char *str);
 void free_mem(char **pointer);
 void free_stack(stack_t *head);
 int isemptyline(char *str);
+size_t stack_hight(stack_t *top);
+int div_top(stack_t **top, unsigned int ln, char **inst);
 
 
 #endif
