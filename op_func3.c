@@ -79,7 +79,7 @@ int pchar_top(stack_t **top, unsigned int ln, char **inst)
 	temp = *top;
 	if (temp->n > 127 || temp->n < 32)
 	{
-		fprintf(stderr, "L%d, can't pchar, value out of range\n", ln);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", ln);
 		free_mem(inst);
 		return (-1);
 	}
@@ -96,15 +96,13 @@ int pchar_top(stack_t **top, unsigned int ln, char **inst)
 int pstr_top(stack_t **top, unsigned int ln, char **inst)
 {
 	stack_t *temp = *top;
-	(void)ln;
-	(void)inst;
 
+	inst = (char **) inst;
+	ln = (unsigned int) ln;
 	while (temp != NULL)
 	{
 		if (temp->n > 127 || temp->n <= 0)
-		{
 			break;
-		}
 		printf("%c", temp->n);
 		temp = temp->next;
 	}
