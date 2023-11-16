@@ -8,26 +8,24 @@
  */
 int rotr(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *ptr1, *ptr2;
+	stack_t *temp;
 	(void)ln;
 	(void)inst;
 
+	temp = *top;
 	if (*top == NULL || (*top)->next == NULL)
 	{
 		return (1);
 	}
-	ptr1 = *top;
-	ptr2 = ptr1->next;
-	ptr1->next = NULL;
-	ptr1->prev = ptr2;
 
-	while (ptr2 != NULL)
+	while (temp->next != NULL)
 	{
-		ptr2->prev = ptr2->next;
-		ptr2->next = ptr1;
-		ptr1 = ptr2;
-		ptr2 = ptr2->prev;
+		temp = temp->next;
 	}
-	*top = ptr1;
+	temp->next = *top;
+	(temp->prev)->next = NULL;
+	temp->prev = NULL;
+	(*top)->prev = temp;
+	*top = temp;
 	return (1);
 }
