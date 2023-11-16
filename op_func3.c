@@ -39,30 +39,26 @@ int div_top(stack_t **top, unsigned int ln, char **inst)
  */
 int mod_top(stack_t **top, unsigned int ln, char **inst)
 {
-	stack_t *temp = NULL;
+	int x, y;
 
-	inst = (char **) inst;
 	if (stack_hight(*top) < 2)
 	{
-		fprintf(stderr, "L%d: can't div stack too short\n", ln);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", ln);
 		free_mem(inst);
 		return (-1);
 	}
-
-	temp = *top;
-	if (temp->n == 0)
+	if ((*top)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", ln);
 		free_mem(inst);
 		return (-1);
 	}
-
-	(temp->next)->n = (temp->next)->n % temp->n;
-	/**top = temp->next;*/
+	x = (*top)->n;
+	y = (*top)->next->n;
+	(*top)->next->n = y % x;
 	pop_top(top, ln, inst);
 	return (1);
 }
-
 /**
  * pchar_top - prints a char equivilent to an int
  * @top: the top element of the stack
@@ -74,25 +70,22 @@ int pchar_top(stack_t **top, unsigned int ln, char **inst)
 {
 	stack_t *temp = NULL;
 
-	temp = *top;
-	if (temp == NULL || top == NULL)
+	if (top == NULL || *top == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", ln);
 		free_mem(inst);
 		return (-1);
 	}
-
+	temp = *top;
 	if (temp->n > 127 || temp->n < 32)
 	{
 		fprintf(stderr, "L%d, can't pchar, value out of range\n", ln);
 		free_mem(inst);
 		return (-1);
 	}
-
 	printf("%c\n", temp->n);
 	return (1);
 }
-
 /**
  * pstr_top - prints the stack as a string
  * @top: the top element of the stack
