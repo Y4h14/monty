@@ -4,9 +4,9 @@
  * @top: the top element of the stack
  * Return: the hight of the stack
  */
-size_t stack_hight(stack_t *top)
+int stack_hight(stack_t *top)
 {
-	size_t i;
+	int i;
 
 	for (i = 0; top != NULL; i++)
 		top = top->next;
