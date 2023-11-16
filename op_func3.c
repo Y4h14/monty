@@ -124,7 +124,7 @@ int pstr_top(stack_t **top, unsigned int ln, char **inst)
 }
 
 /**
- * rtol - rotates the stack to the top
+ * rotl - rotates the stack to the top
  * @top: the top element of the stack
  * @ln: line number
  * @inst: the line instructions array

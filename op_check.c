@@ -21,11 +21,12 @@ int (*op_check(char *opcode))(stack_t **stack, unsigned int ln, char **inst)
 		{"pchar", pchar_top},
 		{"pstr", pstr_top},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
 
-	while (i < 14)
+	while (i < 15)
 	{
 		if (strcmp(opcode, op_list[i].opcode) == 0)
 			return (op_list[i].f);
