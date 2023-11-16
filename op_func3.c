@@ -11,8 +11,8 @@ int div_top(stack_t **top, unsigned int ln, char **inst)
 {
 	stack_t *temp = NULL;
 
-	inst = (char **) inst;
-	if (stack_hight(*top) < 2)
+
+	if (*top == NULL || stack_hight(*top) < 2)
 	{
 		fprintf(stderr, "L%d: can't div stack too short\n", ln);
 		free_mem(inst);
