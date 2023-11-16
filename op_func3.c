@@ -77,7 +77,7 @@ int pchar_top(stack_t **top, unsigned int ln, char **inst)
 		return (-1);
 	}
 	temp = *top;
-	if (temp->n > 127 || temp->n < 32)
+	if (temp->n > 127 || temp->n < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", ln);
 		free_mem(inst);
